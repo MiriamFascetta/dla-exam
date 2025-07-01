@@ -285,11 +285,47 @@ Fine-tuning the full network significantly outperformed classical classifiers li
 
 
 
+## Lab 2 - Transformers
+
+This lab focuses on using DistilBERT for text classification on the Rotten Tomatoes sentiment dataset.
 
 
+### Exercises 1.1, 1.2 and 1.3.1
+
+The `[CLS]` token from the last transformer layer of the DistilBERT base (uncased) model was used as a sentence-level feature representation.
+The `[CLS]` embedding captures global semantic information from each sentence, making it a suitable input for downstream classifiers. 
 
 
+### Exercises 1.3.2 and 1.3.3
 
+Classical classifiers were trained using the `[CLS]` features:
+- Support Vector Machine (SVM): 82% validation accuracy
+- Logistic Regression: 83% validation accuracy
+- K-Nearest Neighbors (K-NN): 74% validation accuracy
+
+
+### Exercises 2.1, 2.2, 2.3 and 3.1
+
+A classification head was added on top of the `[CLS]` token, and the model was fine-tuned for sentiment classification.
+- Baseline (No fine-tuning): Accuracy: 50%
+  The pretrained model without task-specific fine-tuning behaves as a random classifier. This is expected because the newly added classification head is randomly initialized.
+
+Several fine-tuning strategies were explored for DistilBERT. Some approaches were computationally intensive due to the large size of DistilBERT, while others offered substantial memory and time savings without sacrificing accuracy:
+- Full Fine-Tuning (32-bit):
+  * Accuracy: 83.96%
+  * Time: 8:46 (3 epochs)
+- Fine-Tune Classifier + Last Transformer Layer:
+  * Accuracy: 85.27%
+  * Time: 8:59 (3 epochs)
+- Full Fine-Tuning with Mixed Precision (16-bit):
+  * Accuracy: 85.08%
+  * Time: 3:30 (3 epochs)
+- Parameter-Efficient Fine-Tuning (LoRA):
+  * Accuracy: 83.20%
+  * Time: 7:12 (3 epochs)
+- Using DistilBERT Pretrained on SST-2:
+  * Accuracy: 90.53%
+  * Time: 0:11 (3 epochs)
 
 
 
