@@ -1,10 +1,8 @@
-# DLA Laboratories
+# Brief summary of labs results
 
-## Brief summary of labs results
+## Lab 1 - CNNs
 
-### Lab 1 - CNNs
-
-#### Exercise 1.1 - Basic MLP
+### Exercise 1.1 - Basic MLP
 Write and train a basic MLP to use on MNIST dataset
 Network:
 
@@ -34,7 +32,10 @@ epochs = 50
 lr = 0.001
 plots
 
-#### Exercise 1.2: MLP depth experiments with and without residual connections
+From now on, Adam optimizer was used if not specified.
+
+
+### Exercise 1.2: MLP depth experiments with and without residual connections
 
 Network:
 
@@ -109,7 +110,7 @@ plot
 We can clearly see that even deep networks are able to learn because of the gradient signal
 
 
-#### Exercise 1.3: CNNs with and without residual connections
+### Exercise 1.3: CNNs trained on Cifar10 with and without residual connections
 
 Network:
 
@@ -222,9 +223,9 @@ Comment:
 The accuracy decreases with the depth of the network
 
 
-#### Exercise 2.1: Fine-tune of a pre-trained CNN
+### Exercise 2.1: Fine-tuning of a CNN pre-trained on Cifar10 using Cifar100
 
-Network:
+Network modified to support feature extraction:
 
 ```
 class Net(nn.Module):
@@ -269,13 +270,16 @@ class Net(nn.Module):
         return self.feature_extractor(x)
 ```
 
+CNN of depth = 5 was used as feature extractor.
+Initially classical classifiers were trained to get a baseline
+LinearSVM accuracy on validation data: 30.24%
+K-Nearest Neighbor accuracyon validation data: 16.11%
 
+Then, the final classifier was replaced to output 100, and the fc and classifier layers parameter were finetuned reaching the baseline accuracy of 30.63% on validation data.
 
+Then all the parameters were finetuned reaching an accuracy of 55.48% using Adam optimizer with lr=0.001 and of 532.67% using SGD with lr=0.01.
 
-
-
-
-
+A model was trained on Cifar100 to compare the results reaching an accuracy of 55.41%.
 
 
 
