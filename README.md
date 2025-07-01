@@ -2,9 +2,10 @@
 
 ## Lab 1 - CNNs
 
-### Exercise 1.1 - Basic MLP
-Write and train a basic MLP to use on MNIST dataset
-Network:
+### Exercise 1.1 - Basic MLP on MNIST
+Implement and train a simple Multi-Layer Perceptron on the MNIST dataset.
+
+**Model architecture**:
 
 ```
 class BasicMLP(nn.Module):
@@ -22,22 +23,19 @@ class BasicMLP(nn.Module):
         return x
 ```
 
-Training with SGD optimizer:
-epochs = 50
-lr = 0.1
+**Training setup**:
+- SGD: 50 epochs, learning rate = 0.1
+- Adam: 50 epochs, learning rate = 0.001
+
+
 plots
 
-Training with Adam optimizer:
-epochs = 50
-lr = 0.001
-plots
-
-From now on, Adam optimizer was used if not specified.
+Adam is used as the default optimizer for all following experiments unless otherwise specified.
 
 
 ### Exercise 1.2: MLP depth experiments with and without residual connections
 
-Network:
+**Model architecture**:
 
 ```
 class LinearBlock(nn.Module):
@@ -76,43 +74,43 @@ class Net(nn.Module):
         return self.network(x)
 ```
 
-Training without residual connections:
-epochs = 50
-lr = 0.001
-width = 64
+Training setup (no residuals):
+- 50 epochs, lr = 0.001, width = 64
+- Tested depths: 10, 20, 30
 
-depth = 10:
+Plots for depth = 10:
 plots
 
-depth = 20:
+Plots for depth = 20:
 
-depth = 30:
+Plots for depth = 30:
 
-Gradients of the last model:
+Gradient plots of the last model:
 plot
 
 
-Training with residual connections:
-epochs = 50
-lr = 0.001
-width = 64
+**Training setup (with residuals)**:
+- 50 epochs, lr = 0.001, width = 64
+- Tested depths: 5, 10, 15
 
-depth = 5:
+Plots for depth = 5:
 plots
 
-depth = 10:
+Plots for depth = 10:
 
-depth = 15:
+Plots for depth = 15:
 
-Gradients of the last model:
+Gradient plots of the last model:
 plot
 
-We can clearly see that even deep networks are able to learn because of the gradient signal
+**Comment**:
+Without residual connections, deeper networks suffered from vanishing gradients and struggled to converge.
+With residual connections, even deeper MLPs learned effectively, as shown by the gradient signal and improved training performance.
 
 
 ### Exercise 1.3: CNNs trained on Cifar10 with and without residual connections
 
-Network:
+**Model architecture**:
 
 ```
 class LinearBlock(nn.Module):
@@ -191,41 +189,39 @@ class Net(nn.Module):
         return self.network(x)
 ```
 
-Training with residual connections:
-epochs = 100
-lr = 0.001
-base_channels=64
+**Training setup (with residuals)**:
+- 100 epochs, lr = 0.001, base_channels = 64
+- Depths tested: 5, 10, 15
 
-depth = 5:
+Plots for depth = 5:
 plots
 
-depth = 10:
+Plots for depth = 10:
 
-depth = 15:
+Plots for depth = 15:
 
-Comment:
-The accuracy increases with the depth of the network
+**Comment**:
+Accuracy consistently increased with depth, thanks to residual connections which preserved gradient signal.
 
 
-Training without residual connections:
-epochs = 100
-lr = 0.001
-base_channels=64
+Training setup (without residuals):
+- 100 epochs, lr = 0.001, base_channels = 64
+- Depths tested: 5, 10, 15
 
-depth = 5:
+Plots for depth = 5:
 plots
 
-depth = 10:
+Plots for depth = 10:
 
-depth = 15:
+Plots for depth = 15:
 
-Comment:
-The accuracy decreases with the depth of the network
+**Comment**:
+Accuracy decreased with network depth due to training difficulties like vanishing gradients from missing residual connections.
 
 
-### Exercise 2.1: Fine-tuning of a CNN pre-trained on Cifar10 using Cifar100
+### Exercise 2.1: Fine-tuning CIFAR10 CNN on CIFAR100
 
-Network modified to support feature extraction:
+**Updated model architecture**:
 
 ```
 class Net(nn.Module):
@@ -270,17 +266,22 @@ class Net(nn.Module):
         return self.feature_extractor(x)
 ```
 
-CNN of depth = 5 was used as feature extractor.
-Initially classical classifiers were trained to get a baseline
-LinearSVM accuracy on validation data: 30.24%
-K-Nearest Neighbor accuracyon validation data: 16.11%
+**Setup**:
+- Feature extractor: CNN (depth = 5) pretrained on CIFAR10
 
-Then, the final classifier was replaced to output 100, and the fc and classifier layers parameter were finetuned reaching the baseline accuracy of 30.63% on validation data.
+**Classical classifiers trained on extracted features**:
+- Linear SVM: 30.24% validation accuracy
+- K-NN: 16.11% validation accuracy
 
-Then all the parameters were finetuned reaching an accuracy of 55.48% using Adam optimizer with lr=0.001 and of 532.67% using SGD with lr=0.01.
+**Fine-tuning results**:
+- fc & classifier layers only: 30.63%
+- Full network (Adam, lr=0.001): 55.48%
+- Full network (SGD, lr=0.01): 52.67%
 
-A model was trained on Cifar100 to compare the results reaching an accuracy of 55.41%.
+**Training from scratch on CIFAR100**: 55.41%
 
+**Comment**:
+Fine-tuning the full network significantly outperformed classical classifiers like SVM and K-NN. However, training from scratch on CIFAR100 achieved nearly identical performance, suggesting that the dataset size and model capacity may have been too limited for fine-tuning to offer a significant advantage.
 
 
 
