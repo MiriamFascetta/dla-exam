@@ -14,8 +14,6 @@ class BasicMLP(nn.Module):
         self.fc1 = nn.Linear(input_size, width)
         self.fc2 = nn.Linear(width, width)
         self.out = nn.Linear(width, output_size)
-'''
-'''
     def forward(self, x):
         x = x.view(-1, 28 * 28)
         x = F.relu(self.fc1(x))
