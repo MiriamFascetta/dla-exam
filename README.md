@@ -7,7 +7,6 @@
 #### Exercise 1.1
 Write and train a basic MLP to use on MNIST dataset
 
-'''ruby
 class BasicMLP(nn.Module):
     def __init__(self, input_size=28*28, width=64, output_size=10):
         super().__init__()
@@ -22,4 +21,3 @@ class BasicMLP(nn.Module):
         x = self.out(x)
         return x
 
-'''
