@@ -18,6 +18,7 @@ class BasicMLP(nn.Module):
 '''
 
 '''
+
     def forward(self, x):
         x = x.view(-1, 28 * 28)
         x = F.relu(self.fc1(x))
