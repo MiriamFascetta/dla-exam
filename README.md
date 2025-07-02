@@ -439,9 +439,9 @@ Best hyperparameters:
 - Temperature T = 50
 - ε = 0
 
-![Screenshot 2025-07-02 163118](https://github.com/user-attachments/assets/9b818124-9a86-42cc-bbe6-ce28ce03af7c)
+![Screenshot 2025-07-02 163951](https://github.com/user-attachments/assets/5c64f38a-7741-452f-b1b6-670957f659b0)
 
-![Screenshot 2025-07-02 163153](https://github.com/user-attachments/assets/e7373e59-cc16-437e-97be-a7170d5c600b)
+![Screenshot 2025-07-02 164039](https://github.com/user-attachments/assets/c07793c3-308d-41dd-9dd0-7dfa2a84ba36)
 
 ![Screenshot 2025-07-02 161106](https://github.com/user-attachments/assets/ef672def-a1c3-4c2f-a707-acd52f10ee8c)
 
