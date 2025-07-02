@@ -37,7 +37,7 @@ Adam is used as the default optimizer for all following experiments unless other
 
 **Model architecture**:
 
-```
+```ruby
 class LinearBlock(nn.Module):
     def __init__(self, width):
         super().__init__()
@@ -112,7 +112,7 @@ With residual connections, even deeper MLPs learned effectively, as shown by the
 
 **Model architecture**:
 
-```
+```ruby
 class LinearBlock(nn.Module):
     def __init__(self, width):
         super().__init__()
@@ -223,7 +223,7 @@ Accuracy decreased with network depth due to training difficulties like vanishin
 
 **Updated model architecture**:
 
-```
+```ruby
 class Net(nn.Module):
     def __init__(self, mode='mlp', input_size=28*28, in_channels=1, width=64, base_channels=64,
                  depth=1, residual=False, output_size=10, return_features=False):
