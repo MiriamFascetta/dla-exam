@@ -369,7 +369,7 @@ To build a basic OOD detection pipeline:
   - ROC & Precision-Recall curves
   - Autoencoder loss (decoder trained, encoder reused from CNN)
 
-![Screenshot 2025-07-02 163951](https://github.com/user-attachments/assets/c35c2286-562e-4ae7-a142-a55349c459c4)
+![Screenshot 2025-07-02 122816](https://github.com/user-attachments/assets/5c4fb3c9-6898-45ac-8c73-3b8b7ac4f72f)
 
 ![Screenshot 2025-07-02 122910](https://github.com/user-attachments/assets/e7fed3fa-01be-46d1-97a6-b4829a132e5c)
 
