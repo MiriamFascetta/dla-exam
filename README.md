@@ -312,7 +312,7 @@ Fine-tuning the full network significantly outperformed classical classifiers li
 
 
 
-## Lab 2 - Transformers
+## Lab 3 - Transformers
 
 This lab focuses on using DistilBERT for text classification on the Rotten Tomatoes sentiment dataset.
 
@@ -373,11 +373,11 @@ To build a basic OOD detection pipeline:
 
 ![Screenshot 2025-07-02 122910](https://github.com/user-attachments/assets/e7fed3fa-01be-46d1-97a6-b4829a132e5c)
 
-![Screenshot 2025-07-02 123033](https://github.com/user-attachments/assets/1b8db73a-c489-4efe-82ef-31047ba30c3c)
+![Screenshot 2025-07-02 160523](https://github.com/user-attachments/assets/cb27d600-78c5-4beb-902b-c462bfdf088a)
 
-![Screenshot 2025-07-02 123059](https://github.com/user-attachments/assets/574d7728-a7f1-4147-b63c-188f5e076c69)
+![Screenshot 2025-07-02 160716](https://github.com/user-attachments/assets/e0eea19d-2736-490d-904c-6e556050fcec)
 
-![Screenshot 2025-07-02 123124](https://github.com/user-attachments/assets/546b21f9-088f-468c-ba2b-0563f35c95e2)
+![Screenshot 2025-07-02 160745](https://github.com/user-attachments/assets/8379cbe9-c2f5-4efb-a4eb-5a8c1f554393)
 
 ![Screenshot 2025-07-02 122955](https://github.com/user-attachments/assets/2b113390-6609-45bb-a3f3-ee470d74915c)
 
@@ -386,12 +386,12 @@ To build a basic OOD detection pipeline:
 
 Adversarial examples were generated using Fast Gradient Sign Method (FGSM) and test examples from CIFAR-10 for various ε values:
 
-- ε: 0.00 (no pertubation), Accuracy on adversarial: 84.73%
-- ε: 0.01, Accuracy on adversarial: 47.53%
-- ε: 0.05, Accuracy on adversarial: 9.68%
-- ε: 0.10, Accuracy on adversarial: 5.83%
-- ε: 0.20, Accuracy on adversarial: 5.42%
-- ε: 0.30, Accuracy on adversarial: 5.79%
+- ε: 0.00 (no pertubation), Accuracy on adversarial: 84.60%
+- ε: 0.01, Accuracy on adversarial: 47.47%
+- ε: 0.05, Accuracy on adversarial: 10.18%
+- ε: 0.10, Accuracy on adversarial: 4.85%
+- ε: 0.20, Accuracy on adversarial: 4.38%
+- ε: 0.30, Accuracy on adversarial: 5.41%
 
 **Comment**:
 As ε increases, the perturbation becomes more aggressive, leading to a drop in accuracy.
@@ -436,16 +436,20 @@ Adversarial training with ε = 0.01 significantly improved robustness at that le
 **ODIN** was implemented to improve OOD detection using temperature scaling and input perturbation. A grid search was conducted on temperature T and ε.
 
 Best hyperparameters:
-- Temperature T = 100
+- Temperature T = 50
 - ε = 0
 
-![Screenshot 2025-07-02 123913](https://github.com/user-attachments/assets/c5f28f78-4713-4c23-977d-6b31af80a021)
+![Screenshot 2025-07-02 163118](https://github.com/user-attachments/assets/9b818124-9a86-42cc-bbe6-ce28ce03af7c)
 
-![Screenshot 2025-07-02 123939](https://github.com/user-attachments/assets/d6e3fd3e-25a6-401f-885e-ca4dd7757f18)
+![Screenshot 2025-07-02 163153](https://github.com/user-attachments/assets/e7373e59-cc16-437e-97be-a7170d5c600b)
 
-![Screenshot 2025-07-02 124000](https://github.com/user-attachments/assets/bb8b4b44-c752-4858-b6b4-0525e98c83a5)
+![Screenshot 2025-07-02 161106](https://github.com/user-attachments/assets/ef672def-a1c3-4c2f-a707-acd52f10ee8c)
+
+![Screenshot 2025-07-02 161140](https://github.com/user-attachments/assets/7a2520f0-b5ad-4aef-8c04-144237369b8d)
+
+![Screenshot 2025-07-02 161212](https://github.com/user-attachments/assets/45165cd3-d848-4941-96db-e1996a8f782b)
+
 
 **Comment**:
-ODIN did not outperform simpler baselines in this setup. The AUC of 0.66 is lower than that of the base CNN (AUC = 0.80) and than the FGSM-augmented model (AUC = 0.83).
-
+ODIN improved OOD detection performance, achieving the highest AUC (0.86) among all tested methods.
 
