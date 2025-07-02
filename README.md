@@ -7,7 +7,7 @@ Implement and train a simple Multi-Layer Perceptron on the MNIST dataset.
 
 **Model architecture**:
 
-```
+```ruby
 class BasicMLP(nn.Module):
     def __init__(self, input_size=28*28, width=64, output_size=10):
         super().__init__()
