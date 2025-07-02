@@ -447,7 +447,7 @@ Best hyperparameters:
 
 ![Screenshot 2025-07-02 161140](https://github.com/user-attachments/assets/7a2520f0-b5ad-4aef-8c04-144237369b8d)
 
-![Screenshot 2025-07-02 161212](https://github.com/user-attachments/assets/45165cd3-d848-4941-96db-e1996a8f782b)
+![Screenshot 2025-07-02 165642](https://github.com/user-attachments/assets/7a794eaa-9a5a-4a11-8d0f-646bd387d875)
 
 
 **Comment**:
