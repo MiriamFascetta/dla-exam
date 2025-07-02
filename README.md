@@ -325,7 +325,63 @@ Several fine-tuning strategies were explored for DistilBERT. Some approaches wer
   * Time: 7:12 (3 epochs)
 - Using DistilBERT Pretrained on SST-2:
   * Accuracy: 90.53%
-  * Time: 0:11 (3 epochs)
+  * Time: 0:11
+
+
+
+## Lab 4 - Adversarial Learning and OOD Detection
+
+### Exercises 1.1 and 1.2 
+
+To build a simple OOD detection pipeline:
+- CIFAR-10 dataset was used as ID and a 20 non-overlapping classes subset of CIFAR-100 as OOD
+- A CNN of depth = 5 trained on CIFAR-10 in the first lab was used
+- Metrics such as logits and porbabilities histograms, ROC and Precision-Recall curves and Autoencoder loss (used the feature extractor from CNN as encoder and trained the decoder) were used to detect if a test sample is OOD
+
+'insert plots'
+
+
+### Exercise 2.1 
+
+Adversarial examples were created using Fast Gradient Sign Method (FGSM) to perturb test examples from CIFAR-10. Different values for ε were tested:
+
+- ε: 0.00, Accuracy on adversarial: 42.56%
+- ε: 0.01, Accuracy on adversarial: 38.79%
+- ε: 0.05, Accuracy on adversarial: 28.77%
+- ε: 0.10, Accuracy on adversarial: 22.35%
+- ε: 0.20, Accuracy on adversarial: 17.49%
+- ε: 0.30, Accuracy on adversarial: 14.92%
+
+
+### Exercise 2.2
+
+The implementation of FGSM is used to augment the training dataset with adversarial samples using this loss
+
+L(θ, x, y)= α * L(θ, x, y) + (1 - α) * L(θ, x + ε * sign (∇_x L(θ, x, y_TRUE), y))
+
+Then the model is evaluated to see if it is more (or less) robust to ID samples using the OOD detection pipeline and metrics implemented in Exercise 1.
+
+The accuracies for the different values of ε changed to:
+
+- ε: 0.00, Accuracy on adversarial: 52.96%
+- ε: 0.01, Accuracy on adversarial: 50.61%
+- ε: 0.05, Accuracy on adversarial: 40.65%
+- ε: 0.10, Accuracy on adversarial: 32.48%
+- ε: 0.20, Accuracy on adversarial: 22.57%
+- ε: 0.30, Accuracy on adversarial: 19.11%
+
+'insert plots'
+
+### Exercise 3.1
+
+Implement ODIN for OOD detection. The temperature hyperparameter is implemented in the base model and a grid search on T and ε is done.
+
+The values that work best are:
+- T = 100
+- ε = 0
+
+The resulting AUC value is 0.66.
+
 
 
 
