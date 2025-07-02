@@ -389,6 +389,9 @@ Adversarial examples were created using Fast Gradient Sign Method (FGSM) to pert
 - ε: 0.20, Accuracy on adversarial: 5.42%
 - ε: 0.30, Accuracy on adversarial: 5.79%
 
+**Comment**:
+Performance degrade as ε value increases
+
 
 ### Exercise 2.2
 
@@ -396,18 +399,33 @@ The implementation of FGSM is used to augment the training dataset with adversar
 
 L(θ, x, y)= α * L(θ, x, y) + (1 - α) * L(θ, x + ε * sign (∇_x L(θ, x, y_TRUE), y))
 
+with ε = 0.01
+
 Then the model is evaluated to see if it is more (or less) robust to ID samples using the OOD detection pipeline and metrics implemented in Exercise 1.
 
 The accuracies for the different values of ε changed to:
 
-- ε: 0.00, Accuracy on adversarial: 52.96%
-- ε: 0.01, Accuracy on adversarial: 50.61%
-- ε: 0.05, Accuracy on adversarial: 40.65%
-- ε: 0.10, Accuracy on adversarial: 32.48%
-- ε: 0.20, Accuracy on adversarial: 22.57%
-- ε: 0.30, Accuracy on adversarial: 19.11%
+- ε: 0.00 (no pertubation), Accuracy on adversarial: 86.81%
+- ε: 0.01, Accuracy on adversarial: 76.38%
+- ε: 0.05, Accuracy on adversarial: 30.00%
+- ε: 0.10, Accuracy on adversarial: 9.39%
+- ε: 0.20, Accuracy on adversarial: 3.26%
+- ε: 0.30, Accuracy on adversarial: 2.08%
 
-'insert plots'
+![Screenshot 2025-07-02 140138](https://github.com/user-attachments/assets/71fe3173-b199-47b0-8df3-6fd738c534d7)
+
+![Screenshot 2025-07-02 140223](https://github.com/user-attachments/assets/71025b02-e9f5-4c49-8507-64e6a91f21f8)
+
+![Screenshot 2025-07-02 140253](https://github.com/user-attachments/assets/8092d9a4-1518-4039-8ff3-b734c821e783)
+
+![Screenshot 2025-07-02 140312](https://github.com/user-attachments/assets/bbeacc62-db2a-41e6-a8ac-c2aa91a8de70)
+
+![Screenshot 2025-07-02 140333](https://github.com/user-attachments/assets/bd4e0a39-47f6-4e99-8aa4-a235ce8b7e6e)
+
+
+**Comment**:
+It was trained with ε = 0.01 so the performance corresponding to ε = 0.01 increased, the ones with ε = 0.05 and ε = 0.1 increased too.
+
 
 ### Exercise 3.1
 
