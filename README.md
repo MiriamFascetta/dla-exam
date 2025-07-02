@@ -27,8 +27,11 @@ class BasicMLP(nn.Module):
 - SGD: 50 epochs, learning rate = 0.1
 - Adam: 50 epochs, learning rate = 0.001
 
+Plots for SGD
+![Screenshot 2025-07-02 120015](https://github.com/user-attachments/assets/1e4637b0-acc5-45a2-bc37-881fe41d883e)
 
-plots
+Plots for Adam
+![Screenshot 2025-07-02 120256](https://github.com/user-attachments/assets/f79d7607-aa33-45e2-aa07-358d1cb9b842)
 
 Adam is used as the default optimizer for all following experiments unless otherwise specified.
 
@@ -79,14 +82,16 @@ Training setup (no residuals):
 - Tested depths: 10, 20, 30
 
 Plots for depth = 10:
-plots
+![Screenshot 2025-07-02 120353](https://github.com/user-attachments/assets/5229510e-29f6-4dc3-b895-e3a4e7fe8962)
 
 Plots for depth = 20:
+![Screenshot 2025-07-02 120422](https://github.com/user-attachments/assets/fd66413d-9042-402a-bf20-d38282417b7d)
 
 Plots for depth = 30:
+![Screenshot 2025-07-02 120505](https://github.com/user-attachments/assets/7362c784-7a02-4234-b972-8eea4b81ed63)
 
 Gradient plots of the last model:
-plot
+![Screenshot 2025-07-02 120534](https://github.com/user-attachments/assets/8e6f4e7c-9a15-407c-95ac-8abf696267d3)
 
 
 **Training setup (with residuals)**:
@@ -94,14 +99,17 @@ plot
 - Tested depths: 5, 10, 15
 
 Plots for depth = 5:
-plots
+![Screenshot 2025-07-02 120629](https://github.com/user-attachments/assets/1c6595fc-dc41-411d-81ee-e877f6c39b97)
 
 Plots for depth = 10:
+![Screenshot 2025-07-02 120656](https://github.com/user-attachments/assets/8ea7347a-19d1-4383-926b-3d2cc9c80f02)
 
 Plots for depth = 15:
+![Screenshot 2025-07-02 120719](https://github.com/user-attachments/assets/ee0cff2c-6e32-4623-8157-db4f11b850b3)
 
 Gradient plots of the last model:
-plot
+![Screenshot 2025-07-02 120802](https://github.com/user-attachments/assets/bea5f00e-aa67-4297-9b34-5d32d074c387)
+
 
 **Comment**:
 Without residual connections, deeper networks suffered from vanishing gradients and struggled to converge.
@@ -194,11 +202,14 @@ class Net(nn.Module):
 - Depths tested: 5, 10, 15
 
 Plots for depth = 5:
-plots
+![Screenshot 2025-07-02 120901](https://github.com/user-attachments/assets/5afdc94d-c8e9-491b-a872-a48c81b1add9)
 
 Plots for depth = 10:
+![Screenshot 2025-07-02 120931](https://github.com/user-attachments/assets/486cfcb1-dcba-416f-b971-d19bcfb03f71)
 
 Plots for depth = 15:
+![Screenshot 2025-07-02 120957](https://github.com/user-attachments/assets/f781e484-c29f-4a37-94c7-6a0d6f1caff4)
+
 
 **Comment**:
 Accuracy consistently increased with depth, thanks to residual connections which preserved gradient signal.
@@ -209,11 +220,14 @@ Training setup (without residuals):
 - Depths tested: 5, 10, 15
 
 Plots for depth = 5:
-plots
+![Screenshot 2025-07-02 121057](https://github.com/user-attachments/assets/d6f5531e-9219-463f-b19c-ad7137af886d)
 
 Plots for depth = 10:
+![Screenshot 2025-07-02 121126](https://github.com/user-attachments/assets/8f34943e-9fbd-4b4b-b6fa-d920b97401e4)
 
 Plots for depth = 15:
+![Screenshot 2025-07-02 121149](https://github.com/user-attachments/assets/e8a975dd-3964-4a13-b40d-903472a49715)
+
 
 **Comment**:
 Accuracy decreased with network depth due to training difficulties like vanishing gradients from missing residual connections.
@@ -280,6 +294,19 @@ class Net(nn.Module):
 
 **Training from scratch on CIFAR100**: 55.41%
 
+Plots for fc & classifier layers only
+![Screenshot 2025-07-02 121358](https://github.com/user-attachments/assets/78714cec-2d5b-4a90-a868-c89c7f62e3c4)
+
+Plots for full network using Adam
+![Screenshot 2025-07-02 121501](https://github.com/user-attachments/assets/a1e734ba-2125-4836-bdcf-5e31d3b78f16)
+
+Plots for full network using SGD
+![Screenshot 2025-07-02 121540](https://github.com/user-attachments/assets/4dc52725-748e-42b9-8521-2ff97234d832)
+
+Plots for training from scratch on CIFAR100
+![Screenshot 2025-07-02 121636](https://github.com/user-attachments/assets/a8a117cd-e20b-4349-921e-21119b5b370d)
+
+
 **Comment**:
 Fine-tuning the full network significantly outperformed classical classifiers like SVM and K-NN. However, training from scratch on CIFAR100 achieved nearly identical performance, suggesting that the dataset size and model capacity may have been too limited for fine-tuning to offer a significant advantage.
 
@@ -338,19 +365,29 @@ To build a simple OOD detection pipeline:
 - A CNN of depth = 5 trained on CIFAR-10 in the first lab was used
 - Metrics such as logits and porbabilities histograms, ROC and Precision-Recall curves and Autoencoder loss (used the feature extractor from CNN as encoder and trained the decoder) were used to detect if a test sample is OOD
 
-'insert plots'
+![Screenshot 2025-07-02 122816](https://github.com/user-attachments/assets/9a360d28-ae73-462b-b239-6c4672408374)
+
+![Screenshot 2025-07-02 122910](https://github.com/user-attachments/assets/e7fed3fa-01be-46d1-97a6-b4829a132e5c)
+
+![Screenshot 2025-07-02 123033](https://github.com/user-attachments/assets/1b8db73a-c489-4efe-82ef-31047ba30c3c)
+
+![Screenshot 2025-07-02 123059](https://github.com/user-attachments/assets/574d7728-a7f1-4147-b63c-188f5e076c69)
+
+![Screenshot 2025-07-02 123124](https://github.com/user-attachments/assets/546b21f9-088f-468c-ba2b-0563f35c95e2)
+
+![Screenshot 2025-07-02 122955](https://github.com/user-attachments/assets/2b113390-6609-45bb-a3f3-ee470d74915c)
 
 
 ### Exercise 2.1 
 
 Adversarial examples were created using Fast Gradient Sign Method (FGSM) to perturb test examples from CIFAR-10. Different values for ε were tested:
 
-- ε: 0.00, Accuracy on adversarial: 42.56%
-- ε: 0.01, Accuracy on adversarial: 38.79%
-- ε: 0.05, Accuracy on adversarial: 28.77%
-- ε: 0.10, Accuracy on adversarial: 22.35%
-- ε: 0.20, Accuracy on adversarial: 17.49%
-- ε: 0.30, Accuracy on adversarial: 14.92%
+- ε: 0.00 (no pertubation), Accuracy on adversarial: 84.73%
+- ε: 0.01, Accuracy on adversarial: 47.53%
+- ε: 0.05, Accuracy on adversarial: 9.68%
+- ε: 0.10, Accuracy on adversarial: 5.83%
+- ε: 0.20, Accuracy on adversarial: 5.42%
+- ε: 0.30, Accuracy on adversarial: 5.79%
 
 
 ### Exercise 2.2
@@ -382,8 +419,11 @@ The values that work best are:
 
 The resulting AUC value is 0.66.
 
+![Screenshot 2025-07-02 123913](https://github.com/user-attachments/assets/c5f28f78-4713-4c23-977d-6b31af80a021)
 
+![Screenshot 2025-07-02 123939](https://github.com/user-attachments/assets/d6e3fd3e-25a6-401f-885e-ca4dd7757f18)
 
+![Screenshot 2025-07-02 124000](https://github.com/user-attachments/assets/bb8b4b44-c752-4858-b6b4-0525e98c83a5)
 
 
 
